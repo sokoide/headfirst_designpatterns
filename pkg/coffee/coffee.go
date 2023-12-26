@@ -21,11 +21,6 @@ type Decaf struct {
 	Beverage
 }
 
-type CondimentDecorator struct {
-	beverage Beverage
-	Beverage
-}
-
 type Milk struct {
 	CondimentDecorator
 }
@@ -47,6 +42,16 @@ type Beverage interface {
 	Description() string
 	Cost() float64
 }
+
+type CondimentDecorator struct {
+	beverage Beverage
+}
+
+// mandate 'Beverag' implementation
+var _ Beverage = (*Milk)(nil)
+var _ Beverage = (*Mocha)(nil)
+var _ Beverage = (*Soy)(nil)
+var _ Beverage = (*Whip)(nil)
 
 // methods
 func (c *HouseBlend) Description() string { return "House Blend" }
@@ -72,14 +77,17 @@ func (c *Whip) Cost() float64  { return 0.40 + c.beverage.Cost() }
 func Run() {
 	log.Infoln("--- Coffee ---")
 	c := &HouseBlend{}
-	m := &Milk{CondimentDecorator{beverage: c}}
+	m := &Milk{CondimentDecorator{c}}
 
 	log.Infof("c: %s, %f\n", c.Description(), c.Cost())
 	log.Infof("m: %s, %f\n", m.Description(), m.Cost())
 
-	w := &Whip{CondimentDecorator{beverage: m}}
+	w := &Whip{CondimentDecorator{m}}
 	log.Infof("w: %s, %f\n", w.Description(), w.Cost())
 
-	mc := &Mocha{CondimentDecorator{beverage: w}}
+	mc := &Mocha{CondimentDecorator{w}}
 	log.Infof("mc: %s, %f\n", mc.Description(), mc.Cost())
+
+	s := &Soy{CondimentDecorator{mc}}
+	log.Infof("s: %s, %f\n", "hoge", s.Cost())
 }
