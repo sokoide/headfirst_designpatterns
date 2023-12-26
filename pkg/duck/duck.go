@@ -78,7 +78,8 @@ func (d *RubberDuck) Display() {
 }
 
 // functions
-func RunDuck() {
+func Run() {
+	log.Infoln("--- Duck ---")
 	red := &RedheadDuck{}
 	red.Display()
 	red.Fly()
