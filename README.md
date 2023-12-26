@@ -8,3 +8,4 @@
 
 * Chapter 01 - Strategy - duck
 * Chapter 02 - Observer - weather
+* Chapter 03 - Decorator - coffee
