@@ -77,13 +77,13 @@ func Run() {
 
 	// type assertion
 	if value, ok := p2.(*CheesePizza); ok {
-		log.Infof("if1 value: %+v", value)
+		log.Infof("1: value: %+v", value)
 	} else {
-		log.Infoln("else1")
+		log.Infoln("1: p2 is not a cheese pizza")
 	}
 	if value, ok := p2.(*VeggiePizza); ok {
-		log.Infof("if2 value: %+v", value)
+		log.Infof("2: value: %+v", value)
 	} else {
-		log.Infoln("else2")
+		log.Infoln("2: p2 is not a veggie pizza")
 	}
 }
