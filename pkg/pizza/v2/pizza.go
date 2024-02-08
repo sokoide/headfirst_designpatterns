@@ -40,7 +40,7 @@ func (p *BasePizza) Cut() {
 func (p *BasePizza) Box() {
 }
 
-func (s *PizzaStore) orderPizza(ty string) Pizza {
+func (s *PizzaStore) OrderPizza(ty string) Pizza {
 	p := s.factory.CreatePizza(ty)
 
 	p.Prepare()
@@ -66,10 +66,10 @@ func Run() {
 	log.Infoln("-- Pizza v2 --")
 	store := PizzaStore{factory: &SimpleFactory{}}
 
-	p1 := store.orderPizza("cheese")
+	p1 := store.OrderPizza("cheese")
 	log.Infof("p1: %+v", p1)
 
-	p2 := store.orderPizza("veggie")
+	p2 := store.OrderPizza("veggie")
 	log.Infof("p2: %+v", p2)
 
 	// get type

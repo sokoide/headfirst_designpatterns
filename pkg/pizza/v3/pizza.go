@@ -9,13 +9,9 @@ type BasePizzaStore struct {
 	PizzaStore
 }
 
-type NYPizzaStore struct {
-	BasePizzaStore
-}
+type NYPizzaStore struct{}
 
-type ChicagoPizzaStore struct {
-	BasePizzaStore
-}
+type ChicagoPizzaStore struct{}
 
 type BasePizza struct{ Name string }
 type CheesePizza struct{ BasePizza }
@@ -48,7 +44,7 @@ func (p *BasePizza) Cut() {
 func (p *BasePizza) Box() {
 }
 
-func (s *BasePizzaStore) orderPizza(ty string) Pizza {
+func (s *BasePizzaStore) OrderPizza(ty string) Pizza {
 	p := s.CreatePizza(ty)
 
 	p.Prepare()
@@ -86,10 +82,10 @@ func Run() {
 	var store BasePizzaStore
 	store.PizzaStore = &NYPizzaStore{}
 
-	p1 := store.orderPizza("cheese")
+	p1 := store.OrderPizza("cheese")
 	log.Infof("p1: %+v", p1)
 
 	store.PizzaStore = &ChicagoPizzaStore{}
-	p2 := store.orderPizza("veggie")
+	p2 := store.OrderPizza("veggie")
 	log.Infof("p2: %+v", p2)
 }

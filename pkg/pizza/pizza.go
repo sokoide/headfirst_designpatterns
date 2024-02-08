@@ -33,7 +33,7 @@ func (p *BasePizza) Cut() {
 func (p *BasePizza) Box() {
 }
 
-func orderPizza(ty string) Pizza {
+func OrderPizza(ty string) Pizza {
 	var p Pizza
 	if ty == "cheese" {
 		p = &CheesePizza{BasePizza{"cheese"}}
@@ -50,8 +50,8 @@ func orderPizza(ty string) Pizza {
 
 func Run() {
 	log.Infoln("-- Pizza --")
-	p1 := orderPizza("cheese")
-	p2 := orderPizza("veggie")
+	p1 := OrderPizza("cheese")
+	p2 := OrderPizza("veggie")
 	log.Infof("p1: %+v", p1)
 	log.Infof("p2: %+v", p2)
 
