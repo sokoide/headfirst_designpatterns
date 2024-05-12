@@ -47,7 +47,7 @@ type CondimentDecorator struct {
 	beverage Beverage
 }
 
-// mandate 'Beverag' implementation
+// mandate 'Beverage' implementation
 var _ Beverage = (*Milk)(nil)
 var _ Beverage = (*Mocha)(nil)
 var _ Beverage = (*Soy)(nil)
